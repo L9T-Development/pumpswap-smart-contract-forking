@@ -1,0 +1,54 @@
+use anchor_lang::prelude::*;
+
+#[event]
+pub struct LaunchEvent {
+    pub creator: Pubkey,
+    pub mint: Pubkey,
+    pub bonding_curve: Pubkey,
+    pub metadata: Pubkey,
+
+    pub decimals: u8,
+    pub token_supply: u64,
+
+    pub reserve_lamport: u64,
+    pub reserve_token: u64,
+}
+
+#[event]
+pub struct SwapEvent {
+    pub user: Pubkey,
+    pub mint: Pubkey,
+    pub bonding_curve: Pubkey,
+
+    pub amount_in: u64,
+    pub direction: u8,
+    pub minimum_receive_amount: u64,
+    pub amount_out: u64,
+
+    pub reserve_lamport: u64,
+    pub reserve_token: u64,
+}
+
+#[event]
+pub struct CompleteEvent {
+    pub user: Pubkey,
+    pub mint: Pubkey,
+    pub bonding_curve: Pubkey,
+}
+
+#[event]
+pub struct WithdrawEvent {
+    pub mint: Pubkey,
+    pub bonding_curve: Pubkey,
+    pub sol_amount: u64,
+    pub token_amount: u64
+}
+
+#[event]
+pub struct MigrateEvent {
+    pub token: Pubkey,
+    pub bonding_curve: Pubkey,
+    pub token_in: u64,
+    pub sol_in: u64,
+    pub lp_mint: Pubkey
+}
